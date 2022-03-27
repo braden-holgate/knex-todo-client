@@ -2,7 +2,7 @@ const config = require('./knexfile').development
 const connection = require('knex')(config)
 
 function getTodos(db = connection) {
-  return db('todos').select()
+  return db('todo').select()
 }
 
 // Your DB functions go here
