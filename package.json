@@ -19,6 +19,8 @@
   "license": "ISC",
   "homepage": "https://github.com/dev-academy-challenges/knex-todo-cli#readme",
   "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
+    "knex": "^1.0.4",
     "react-router-dom": "^6.2.2"
   },
   "devDependencies": {
@@ -36,5 +38,8 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "bugs": {
+    "url": "https://github.com/dev-academy-challenges/knex-todo-cli/issues"
   }
 }
