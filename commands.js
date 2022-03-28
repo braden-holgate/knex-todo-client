@@ -39,7 +39,21 @@ function newTask(task) {
   return db
     .addNewTask(task)
     .then(() => {
-      console.log('Item has been deleted')
+      console.log('Item has been added')
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
+}
+
+function updateTask(id, task) {
+  return db
+    .addUpdatedTask(id, task)
+    .then(() => {
+      console.log('Item has been updated')
     })
     .catch((err) => {
       logError(err)
@@ -57,4 +71,5 @@ module.exports = {
   list,
   deleteTodo,
   newTask,
+  updateTask,
 }
