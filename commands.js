@@ -36,6 +36,40 @@ async function deleteTask(id) {
   }
 }
 
+async function addTask(task) {
+  try {
+    const newTask = {
+      task: task,
+    }
+    await db.addTodos(newTask)
+    await list()
+  } catch (error) {
+    logError(error)
+  } finally {
+    db.close()
+  }
+}
+
+// function deleteTask(id) {
+//   return db
+//     .deleteTodos(id)
+//     .then(() => {
+//       // list()
+//       // return null
+//       return db.getTodos()
+//     })
+//     .then((todos) => {
+//       printTodos(todos)
+//       return null
+//     })
+//     .catch((err) => {
+//       logError(err)
+//     })
+//     .finally(() => {
+//       db.close()
+//     })
+// }
+
 function printTodos(todos) {
   todos.forEach((todo) => {
     console.info(`${todo.id}: ${todo.task}`)
@@ -49,4 +83,5 @@ function logError(err) {
 module.exports = {
   list,
   deleteTask,
+  addTask,
 }
