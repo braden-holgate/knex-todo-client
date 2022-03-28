@@ -11,11 +11,14 @@ function close(db = connection) {
   db.destroy()
 }
 
-function completeToDo(task, db = connection) {
-  return db('todos').delete(task)
+function completeToDo(id, db = connection) {
+  return db('todos').where('id', id).delete(id)
 }
 
 // todo.id
+// id
+// .where('id', id)
+//npx knex seed:run to add the deleted to do back
 
 module.exports = {
   getTodos,
