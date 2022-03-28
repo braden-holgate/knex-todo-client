@@ -66,10 +66,25 @@ function updateToDo(id, task) {
       db.close()
     })
 }
+function searchToDo(string) {
+  return db
+    .searchInDb(string)
+    .then((todos) => {
+      console.log('Search results:')
+      printTodos(todos)
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
+}
 
 module.exports = {
   list,
   deleteToDo,
   addToDo,
   updateToDo,
+  searchToDo,
 }

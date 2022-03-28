@@ -20,6 +20,9 @@ switch (cmd) {
   case 'update':
     commands.updateToDo(arg, update) //id and task
     break
+  case 'search':
+    commands.searchToDo(arg) //string
+    break
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
