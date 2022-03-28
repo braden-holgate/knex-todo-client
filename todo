@@ -29,3 +29,7 @@ switch (cmd) {
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
+
+//TODOs
+//Update task as completed
+//filter by tasks that are not yet completed

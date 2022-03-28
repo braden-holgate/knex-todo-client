@@ -10,6 +10,7 @@ exports.seed = function (knex) {
         { id: 1, task: 'Paint the house' },
         { id: 2, task: 'Make dinner' },
         { id: 3, task: 'Get a pet cat' },
+        { id: 4, task: 'new one' },
       ])
     })
 }
