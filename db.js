@@ -22,10 +22,15 @@ function addRecord(newRecord, db = connection) {
   .insert(newRecord)
 }
 
-function updateRecord(key, record, updated, db = connection) {
+function updateRecord(key, record, db = connection) {
   return db('todos')
   .where(key, record)
-  .update('task', updated)
+}
+
+function searchRecords(key, record, db = connection) {
+  return db('todos')
+  .where(key, record)
+  
 }
 
 module.exports = {
@@ -33,5 +38,6 @@ module.exports = {
   close,
   deleteRecord,
   addRecord,
-  updateRecord
+  updateRecord,
+  searchRecords
 }

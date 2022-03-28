@@ -56,6 +56,19 @@ function addNewRecord(taskName) {
   })
 }
 
+function searchTasks(key, record) {
+  return db
+    .getTodos()
+    .then(() => {
+      return db.searchRecords(key, record)
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+    })
+}
+
 function printTodos(todos) {
   todos.forEach((todo) => {
     console.info(`${todo.id}: ${todo.task}`)
@@ -70,5 +83,6 @@ module.exports = {
   list,
   deleteTask,
   addNewRecord,
-  updateTask
+  updateTask,
+  searchTasks
 }

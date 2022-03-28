@@ -17,10 +17,14 @@ switch (cmd) {
     const tasktitle = userInputs[3]
     commands.addNewRecord(tasktitle)
     break
-    case 'update':
-      const updatedRecord = userInputs[4]
-      const id = userInputs[3]
-      commands.updateTask('id', id, updatedRecord)
+  case 'update':
+    const updatedRecord = userInputs[4]
+    const id = userInputs[3]
+    commands.updateTask('id', id, updatedRecord)
+  break
+  case 'search':
+    const task = userInputs[3]
+    commands.searchTasks('task', task)
     break
   default:
     console.log(`I don't understand that command: ${cmd}`)
