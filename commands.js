@@ -15,6 +15,16 @@ function list() {
     })
 }
 
+function deleteTodos(id) {
+  const task = {
+    id: id,
+  }
+  return db.getDelete(task).then(() => {
+    console.log('The task has been deleted.')
+    db.close()
+  })
+}
+
 function printTodos(todos) {
   todos.forEach((todo) => {
     console.info(`${todo.id}: ${todo.task}`)
@@ -27,4 +37,5 @@ function logError(err) {
 
 module.exports = {
   list,
+  deleteTodos,
 }

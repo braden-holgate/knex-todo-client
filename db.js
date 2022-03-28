@@ -6,6 +6,9 @@ function getTodos(db = connection) {
 }
 
 // Your DB functions go here
+function getDelete(task, db = connection) {
+  return db('todos').delete(task)
+}
 
 function close(db = connection) {
   db.destroy()
@@ -14,4 +17,5 @@ function close(db = connection) {
 module.exports = {
   getTodos,
   close,
+  getDelete,
 }
