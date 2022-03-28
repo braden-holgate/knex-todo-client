@@ -33,6 +33,8 @@ async function deleteTask(id) {
     await list()
   } catch (error) {
     logError(error)
+  } finally {
+    db.close()
   }
 }
 
@@ -42,6 +44,33 @@ async function addTask(task) {
       task: task,
     }
     await db.addTodos(newTask)
+    await list()
+  } catch (error) {
+    logError(error)
+  } finally {
+    db.close()
+  }
+}
+
+// function updateTask(id, task) {
+//   const updateTask = {
+//     id: id,
+//     task: task,
+//   }
+//   return db
+//     .updateTodos(updateTask)
+//     .then(() => {
+//       list()
+//     })
+//     .catch((error) => logError(error))
+//     .finally(() => db.close())
+// }
+async function updateTask(id, task) {
+  const updateTask = {
+    task: task,
+  }
+  try {
+    await db.updateTodos(id, updateTask)
     await list()
   } catch (error) {
     logError(error)
@@ -84,4 +113,5 @@ module.exports = {
   list,
   deleteTask,
   addTask,
+  updateTask,
 }

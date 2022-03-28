@@ -22,6 +22,13 @@ switch (cmd) {
     break
   }
 
+  case 'update': {
+    const id = userInputs[3]
+    const updateTask = userInputs[4]
+    commands.updateTask(id, updateTask)
+    break
+  }
+
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
