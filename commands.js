@@ -66,9 +66,25 @@ function updateTodo(target, target2) {
       db.close()
     })
 }
+
+function searchTodo(target) {
+  return db
+    .searchTask(target)
+    .then((result) => {
+      // console.log(`${result} Found search result for ${target}`)
+      console.log(result)
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
+}
 module.exports = {
   list,
   deleteTodo,
   insertTodo,
   updateTodo,
+  searchTodo,
 }

@@ -18,6 +18,10 @@ function updateTask(target, target2, db = connection) {
   return db('todos').where('id', target).update({ task: target2 })
 }
 
+function searchTask(target, db = connection) {
+  return db('todos').groupBy('id').havingIn('task', target)
+}
+
 function close(db = connection) {
   db.destroy()
 }
@@ -28,4 +32,5 @@ module.exports = {
   deleteTask,
   insertTask,
   updateTask,
+  searchTask,
 }
