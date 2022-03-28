@@ -65,10 +65,10 @@ async function addTask(task) {
 //     .catch((error) => logError(error))
 //     .finally(() => db.close())
 // }
-async function updateTask(id, task) {
-  const updateTask = {
-    task: task,
-  }
+async function updateTask(id, updateTask) {
+  // const updateTask = {
+  //   task: task,
+  // }
   try {
     await db.updateTodos(id, updateTask)
     await list()
@@ -101,19 +101,12 @@ async function updateTask(id, task) {
 
 async function searchTask(keyword) {
   try {
-    const todos = await db.getTodos()
-    const task = await findTaskByKeyword(keyword, todos)
-    console.log(task)
+    const todos = await db.findTodos(`%${keyword}%`)
+    printTodos(todos)
   } catch (error) {
     logError(error)
   } finally {
     db.close()
-  }
-}
-
-function findTaskByKeyword(keyword, todos) {
-  for (let task of todos) {
-    if (task.task.includes(keyword)) return task
   }
 }
 
@@ -132,6 +125,5 @@ module.exports = {
   deleteTask,
   addTask,
   updateTask,
-  findTaskByKeyword,
   searchTask,
 }

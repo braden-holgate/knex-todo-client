@@ -5,6 +5,10 @@ function getTodos(db = connection) {
   return db('todos').select()
 }
 
+function findTodos(keyword, db = connection) {
+  return db('todos').select().whereLike('task', keyword)
+}
+
 // Your DB functions go here
 function deleteTodos(id, db = connection) {
   return db('todos').delete().where('id', id)
@@ -15,7 +19,7 @@ function addTodos(newTask, db = connection) {
 }
 
 function updateTodos(id, updateTask, db = connection) {
-  return db('todos').update(updateTask).where('id', id)
+  return db('todos').update('task', updateTask).where('id', id)
 }
 
 function close(db = connection) {
@@ -24,6 +28,7 @@ function close(db = connection) {
 
 module.exports = {
   getTodos,
+  findTodos,
   deleteTodos,
   addTodos,
   updateTodos,
