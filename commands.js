@@ -35,6 +35,20 @@ function deleteTodo(id) {
     })
 }
 
+function newTask(task) {
+  return db
+    .addNewTask(task)
+    .then(() => {
+      console.log('Item has been deleted')
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
+}
+
 function logError(err) {
   console.error('Uh oh!', err.message)
 }
@@ -42,4 +56,5 @@ function logError(err) {
 module.exports = {
   list,
   deleteTodo,
+  newTask,
 }

@@ -13,6 +13,9 @@ switch (cmd) {
   case 'delete':
     commands.deleteTodo(nextCmd)
     break
+  case 'add':
+    commands.newTask(nextCmd)
+    break
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }

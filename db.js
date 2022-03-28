@@ -11,6 +11,10 @@ function deleteTodos(id, db = connection) {
   return db('todos').where('id', id).del(id)
 }
 
+function addNewTask(task, db = connection) {
+  return db('todos').insert({ task })
+}
+
 function close(db = connection) {
   db.destroy()
 }
@@ -19,4 +23,5 @@ module.exports = {
   getTodos,
   close,
   deleteTodos,
+  addNewTask,
 }
