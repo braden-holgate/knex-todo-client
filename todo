@@ -13,3 +13,5 @@ switch (cmd) {
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
+
+console.log(userInputs)
