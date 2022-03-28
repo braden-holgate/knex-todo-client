@@ -16,11 +16,22 @@ function list() {
 }
 
 function deleteTodos(id) {
-  const task = {
-    id: id,
-  }
-  return db.getDelete(task).then(() => {
-    console.log('The task has been deleted.')
+  return db.getDelete(id).then(() => {
+    console.log(`The ${id} has been deleted`)
+    db.close()
+  })
+}
+
+function addTask(task) {
+  return db.addNewTask(task).then(() => {
+    console.log('the task has been added.')
+    db.close()
+  })
+}
+
+function updateTodos(position, position2) {
+  return db.updateNewTask(position, position2).then(() => {
+    console.log('the task has been added')
     db.close()
   })
 }
@@ -38,4 +49,6 @@ function logError(err) {
 module.exports = {
   list,
   deleteTodos,
+  addTask,
+  updateTodos,
 }
