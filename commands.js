@@ -39,7 +39,22 @@ function deleteTodo(id) {
     })
 }
 
+function insertTodo(target) {
+  return db
+    .insertTask(target)
+    .then(() => {
+      console.log(`Task: "${target}", added to your todos`)
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
+}
+
 module.exports = {
   list,
   deleteTodo,
+  insertTodo,
 }
