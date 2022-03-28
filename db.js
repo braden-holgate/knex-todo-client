@@ -14,8 +14,13 @@ function close(db = connection) {
   db.destroy()
 }
 
+function addNewTask(task, db = connection) {
+  return db('todos').insert(task)
+}
+
 module.exports = {
   getTodos,
   close,
   getDelete,
+  addNewTask,
 }
