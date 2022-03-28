@@ -7,6 +7,10 @@ function getTodos(db = connection) {
 
 // Your DB functions go here
 
+function deleteTodos(id, db = connection) {
+  return db('todos').where('id', id).del(id)
+}
+
 function close(db = connection) {
   db.destroy()
 }
@@ -14,4 +18,5 @@ function close(db = connection) {
 module.exports = {
   getTodos,
   close,
+  deleteTodos,
 }
