@@ -39,8 +39,16 @@ function newTodo(task) {
   })
 }
 
+function updateTask(id, update) {
+  return db.updateTodo(id, update).then(() => {
+    console.log(`Task updated: ${update}, at ID: ${id}`)
+    db.close()
+  })
+}
+
 module.exports = {
   list,
   deleteTodo,
   newTodo,
+  updateTask,
 }

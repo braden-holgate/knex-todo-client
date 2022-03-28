@@ -19,9 +19,14 @@ function addTodo(task, db = connection) {
   return db('todos').insert({ task: task })
 }
 
+function updateTodo(id, update, db = connection) {
+  return db('todos').update({ task: update }).where('id', id)
+}
+
 module.exports = {
   getTodos,
   close,
   removeTodo,
   addTodo,
+  updateTodo,
 }
