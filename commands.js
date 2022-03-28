@@ -34,11 +34,24 @@ function addNewRecord(taskName) {
   const task = {
     task: taskName,
   }
-
-  db.addRecord(task).then(() => {
+  return db.addRecord(task).then(() => {
     console.log('Your task has been added :)')
     list()
   })
+}
+
+function updateTask(id, task) {
+  return db
+    .updateNewTask(id, task)
+    .then(() => {
+      console.log('Item has been updated')
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
 }
 
 function printTodos(todos) {
@@ -55,4 +68,5 @@ module.exports = {
   list,
   deleteTask,
   addNewRecord,
+  updateTask,
 }
