@@ -29,6 +29,12 @@ switch (cmd) {
     break
   }
 
+  case 'search': {
+    const keyword = userInputs[3]
+    commands.searchTask(keyword)
+    break
+  }
+
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }

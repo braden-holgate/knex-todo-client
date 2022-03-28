@@ -99,6 +99,24 @@ async function updateTask(id, task) {
 //     })
 // }
 
+async function searchTask(keyword) {
+  try {
+    const todos = await db.getTodos()
+    const task = await findTaskByKeyword(keyword, todos)
+    console.log(task)
+  } catch (error) {
+    logError(error)
+  } finally {
+    db.close()
+  }
+}
+
+function findTaskByKeyword(keyword, todos) {
+  for (let task of todos) {
+    if (task.task.includes(keyword)) return task
+  }
+}
+
 function printTodos(todos) {
   todos.forEach((todo) => {
     console.info(`${todo.id}: ${todo.task}`)
@@ -114,4 +132,6 @@ module.exports = {
   deleteTask,
   addTask,
   updateTask,
+  findTaskByKeyword,
+  searchTask,
 }
