@@ -16,11 +16,25 @@ function list() {
     })
 }
 
-function deleteTask(record) {
+function deleteTask(key, record) {
   return db
     .getTodos()
     .then(() => {
-      return db.deleteRecord('id', record)
+      return db.deleteRecord(key, record)
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      list()
+    })
+}
+
+function updateTask(key, record, updated) {
+  return db
+    .getTodos()
+    .then(() => {
+      return db.updateRecord(key, record, updated)
     })
     .catch((err) => {
       logError(err)
@@ -55,4 +69,5 @@ module.exports = {
   list,
   deleteTask,
   addNewRecord,
+  updateTask
 }

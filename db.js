@@ -12,11 +12,20 @@ function close(db = connection) {
 }
 
 function deleteRecord(key, record, db = connection) {
-  return db('todos').where(key, record).del()
+  return db('todos')
+  .where(key, record)
+  .del()
 }
 
 function addRecord(newRecord, db = connection) {
-  return db('todos').insert(newRecord)
+  return db('todos')
+  .insert(newRecord)
+}
+
+function updateRecord(key, record, updated, db = connection) {
+  return db('todos')
+  .where(key, record)
+  .update('task', updated)
 }
 
 module.exports = {
@@ -24,4 +33,5 @@ module.exports = {
   close,
   deleteRecord,
   addRecord,
+  updateRecord
 }
