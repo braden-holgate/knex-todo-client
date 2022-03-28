@@ -10,6 +10,12 @@ switch (cmd) {
     commands.list()
     break
 
+  case 'done': {
+    const id = userInputs[3]
+    commands.deleteTask(id)
+    break
+  }
+
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
