@@ -49,9 +49,10 @@ function addNewRecord(taskName) {
     task: taskName,
   }
 
-  db.addRecord(task).then(() => {
-    console.log('Your task has been added :)')
-    list()
+  db.addRecord(task)
+    .then(() => {
+      console.log('Your task has been added :)')
+      list()
   })
 }
 
