@@ -31,7 +31,7 @@ function addTask(task) {
 
 function updateTodos(position, position2) {
   return db.updateNewTask(position, position2).then(() => {
-    console.log('the task has been added')
+    console.log(`the task ${position2} has been updated under id ${position}`)
     db.close()
   })
 }
