@@ -7,11 +7,16 @@ function getTodos(db = connection) {
 
 // Your DB functions go here
 
+function deleteItem(task, db = connection) {
+  return db('todo').del(task)
+}
+
 function close(db = connection) {
   db.destroy()
 }
 
 module.exports = {
   getTodos,
+  deleteItem,
   close,
 }

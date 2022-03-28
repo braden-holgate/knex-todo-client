@@ -21,10 +21,18 @@ function printTodos(todos) {
   })
 }
 
+function deleteToDo(id) {
+  return db.deleteItem(id).then(() => {
+    console.log('Item has been deleted')
+    db.close()
+  })
+}
+
 function logError(err) {
   console.error('Uh oh!', err.message)
 }
 
 module.exports = {
   list,
+  deleteToDo,
 }
