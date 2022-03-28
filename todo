@@ -9,14 +9,15 @@ const id = userInputs[3]
 switch (cmd) {
   case 'list':
     commands.list()
+    console.log(id)
     break
   case 'done':
-    // const id = userInputs[3]
     commands.deleteToDo(id)
     // console.log()
     break
-  case 'testing':
-    console.log('tessssting')
+  case 'add':
+    // const task = userInput[]
+    // commands.newTask(task)
     break
   default:
     console.log(`I don't understand that command: ${cmd}`)

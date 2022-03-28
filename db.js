@@ -15,6 +15,10 @@ function completeToDo(id, db = connection) {
   return db('todos').where('id', id).delete(id)
 }
 
+function addNewTask(id, db = connection) {
+  return db('todos').insert(id)
+}
+
 // todo.id
 // id
 // .where('id', id)
@@ -24,4 +28,5 @@ module.exports = {
   getTodos,
   close,
   completeToDo,
+  addNewTask,
 }

@@ -33,7 +33,15 @@ function deleteToDo(id) {
   })
 }
 
+function newTask(id) {
+  return db.addNewTask(id).then(() => {
+    console.log(`${id} has been added to task list`)
+    db.close()
+  })
+}
+
 module.exports = {
   list,
   deleteToDo,
+  newTask,
 }
