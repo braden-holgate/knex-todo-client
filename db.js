@@ -2,7 +2,8 @@ const config = require('./knexfile').development
 const connection = require('knex')(config)
 
 function getTodos(db = connection) {
-  return db('todos').select()
+  return db('todos')
+  .select()
 }
 
 // Your DB functions go here
@@ -22,11 +23,13 @@ function addRecord(newRecord, db = connection) {
   .insert(newRecord)
 }
 
-function updateRecord(key, record, db = connection) {
+function updateRecord(key, record, updated, db = connection) {
   return db('todos')
   .where(key, record)
+  .update('task', updated)
 }
 
+// todo! how to find the given string in the task string 
 function searchRecords(key, record, db = connection) {
   return db('todos')
   .where(key, record)

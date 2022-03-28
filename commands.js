@@ -62,10 +62,14 @@ function searchTasks(key, record) {
     .then(() => {
       return db.searchRecords(key, record)
     })
+    .then((result) => {
+      list(result)
+    })
     .catch((err) => {
       logError(err)
     })
-    .finally(() => {
+    .finally((result) => {
+      console.log('these are your search results!')
     })
 }
 
