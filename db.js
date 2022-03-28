@@ -7,6 +7,11 @@ function getTodos(db = connection) {
 
 // Your DB functions go here
 
+function deleteTodos(id, db = connection) {
+  console.log(db('todo').select())
+  return db('todo').select()
+}
+
 function close(db = connection) {
   db.destroy()
 }

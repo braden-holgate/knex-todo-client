@@ -15,6 +15,21 @@ function list() {
     })
 }
 
+function done(id) {
+  return db
+    .deleteTodos(id)
+    .then((todos) => {
+      printTodos(todos)
+      return null
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
+}
+
 function printTodos(todos) {
   todos.forEach((todo) => {
     console.info(`${todo.id}: ${todo.task}`)
