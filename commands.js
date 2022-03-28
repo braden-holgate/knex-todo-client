@@ -53,8 +53,23 @@ function addToDo(task) {
     })
 }
 
+function updateToDo(id, task) {
+  return db
+    .updateTaskInDb(id, task)
+    .then(() => {
+      console.log('Task has been updated!')
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
+}
+
 module.exports = {
   list,
   deleteToDo,
   addToDo,
+  updateToDo,
 }

@@ -4,17 +4,21 @@ const commands = require('./commands')
 
 const userInputs = process.argv
 const cmd = userInputs[2]
-const opt = userInputs[3]
+const arg = userInputs[3]
+const update = userInputs[4]
 
 switch (cmd) {
   case 'list':
     commands.list()
     break
   case 'done':
-    commands.deleteToDo(opt) //id
+    commands.deleteToDo(arg) //id
     break
   case 'add':
-    commands.addToDo(opt) //task
+    commands.addToDo(arg) //task
+    break
+  case 'update':
+    commands.updateToDo(arg, update) //id and task
     break
   default:
     console.log(`I don't understand that command: ${cmd}`)
