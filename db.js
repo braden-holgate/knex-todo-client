@@ -11,7 +11,12 @@ function close(db = connection) {
   db.destroy()
 }
 
+function deleteRecord(key, record, db = connection) {
+  return db('todos').where(key, record).del()
+}
+
 module.exports = {
   getTodos,
   close,
+  deleteRecord,
 }

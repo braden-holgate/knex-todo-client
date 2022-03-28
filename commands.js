@@ -4,7 +4,8 @@ function list() {
   return db
     .getTodos()
     .then((todos) => {
-      printTodos(todos)
+      // printTodos(todos)
+      console.log(todos)
       return null
     })
     .catch((err) => {
@@ -12,6 +13,20 @@ function list() {
     })
     .finally(() => {
       db.close()
+    })
+}
+
+function deleteTask(record) {
+  return db
+    .getTodos()
+    .then(() => {
+      return db.deleteRecord('id', record)
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      list()
     })
 }
 
@@ -27,4 +42,5 @@ function logError(err) {
 
 module.exports = {
   list,
+  deleteTask,
 }
