@@ -32,6 +32,16 @@ function deleteTodo(id) {
     db.close()
   })
 }
+
+function addTask(task) {
+  const newTask = {
+    task: task,
+  }
+  db.todoAdd(newTask)
+  console.log('you have a new todo')
+  db.close()
+}
+
 //then -> we call the todoDone
 //catch -> handle any errors
 //finally -> close the database connection
@@ -39,4 +49,5 @@ function deleteTodo(id) {
 module.exports = {
   list,
   deleteTodo,
+  addTask,
 }
