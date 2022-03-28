@@ -7,8 +7,8 @@ function getTodos(db = connection) {
 
 // Your DB functions go here
 
-function deleteItem(task, db = connection) {
-  return db('todo').del(task)
+function deleteItem(id, db = connection) {
+  return db('todo').where('id', id).del(id)
 }
 
 function close(db = connection) {
@@ -19,9 +19,14 @@ function addItem(task, db = connection) {
   return db('todo').insert(task)
 }
 
+function updateItem(id, task, db = connection) {
+  return db('todo').where(`id`, id).update('task', task)
+}
+
 module.exports = {
   getTodos,
   deleteItem,
   close,
   addItem,
+  updateItem,
 }
