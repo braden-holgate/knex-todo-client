@@ -25,11 +25,11 @@ function logError(err) {
   console.error('Uh oh!', err.message)
 }
 
-function deleteTodo(id) {
+function deleteTodo(target) {
   return db
-    .deleteTask(id)
+    .deleteTask(target)
     .then(() => {
-      console.log(`Task ${id} completed, keep up the good work :)`)
+      console.log(`Task ${target} completed, keep up the good work :)`)
     })
     .catch((err) => {
       logError(err)
@@ -53,8 +53,22 @@ function insertTodo(target) {
     })
 }
 
+function updateTodo(target, target2) {
+  return db
+    .updateTask(target, target2)
+    .then(() => {
+      console.log(` Task ${target} updated with ${target2}`)
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
+}
 module.exports = {
   list,
   deleteTodo,
   insertTodo,
+  updateTodo,
 }

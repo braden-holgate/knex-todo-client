@@ -6,13 +6,18 @@ function getTodos(db = connection) {
 }
 
 // Your DB functions go here
-function deleteTask(id, db = connection) {
-  return db('todos').where('id', id).del()
+function deleteTask(target, db = connection) {
+  return db('todos').where('id', target).del()
 }
 
 function insertTask(target, db = connection) {
   return db('todos').insert({ task: target })
 }
+
+function updateTask(target, target2, db = connection) {
+  return db('todos').where('id', target).update({ task: target2 })
+}
+
 function close(db = connection) {
   db.destroy()
 }
@@ -22,4 +27,5 @@ module.exports = {
   close,
   deleteTask,
   insertTask,
+  updateTask,
 }
