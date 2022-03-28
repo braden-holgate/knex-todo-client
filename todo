@@ -5,18 +5,18 @@ const commands = require('./commands')
 const userInputs = process.argv
 const cmd = userInputs[2]
 
-// console.log(cmd)
-
 switch (cmd) {
   case 'list':
     commands.list()
     break
-  case 'hello':
-    console.log('hello')
+  case 'done':
+    // const id = userInputs[3]
+    commands.deleteToDo(id)
+    // console.log()
     break
-  // case 'testing':
-  //   console.log('tessssting')
-  //   break
+  case 'testing':
+    console.log('tessssting')
+    break
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
