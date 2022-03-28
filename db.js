@@ -15,8 +15,13 @@ function deleteRecord(key, record, db = connection) {
   return db('todos').where(key, record).del()
 }
 
+function addRecord(newRecord, db = connection) {
+  return db('todos').insert(newRecord)
+}
+
 module.exports = {
   getTodos,
   close,
   deleteRecord,
+  addRecord,
 }

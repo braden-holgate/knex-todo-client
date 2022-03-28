@@ -30,6 +30,17 @@ function deleteTask(record) {
     })
 }
 
+function addNewRecord(taskName) {
+  const task = {
+    task: taskName,
+  }
+
+  db.addRecord(task).then(() => {
+    console.log('Your task has been added :)')
+    list()
+  })
+}
+
 function printTodos(todos) {
   todos.forEach((todo) => {
     console.info(`${todo.id}: ${todo.task}`)
@@ -43,4 +54,5 @@ function logError(err) {
 module.exports = {
   list,
   deleteTask,
+  addNewRecord,
 }

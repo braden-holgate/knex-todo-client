@@ -13,6 +13,10 @@ switch (cmd) {
     const taskId = userInputs[3]
     commands.deleteTask(taskId)
     break
+  case 'add':
+    const tasktitle = userInputs[3]
+    commands.addNewRecord(tasktitle)
+    break
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
