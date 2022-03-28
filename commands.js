@@ -25,14 +25,14 @@ function logError(err) {
   console.error('Uh oh!', err.message)
 }
 
-function deleteTodo(id) {
+function deleteTask(id) {
   return db.removeTodo(id).then(() => {
     console.log(`Delete from Todos ID: ${id}`)
     db.close()
   })
 }
 
-function newTodo(task) {
+function newTask(task) {
   return db.addTodo(task).then(() => {
     console.log(`Task added successfully: ${task}`)
     db.close()
@@ -46,9 +46,17 @@ function updateTask(id, update) {
   })
 }
 
+function searchTask(task) {
+  return db.searchTodo(task).then((searchedTask) => {
+    console.log(searchedTask)
+    db.close()
+  })
+}
+
 module.exports = {
   list,
-  deleteTodo,
-  newTodo,
+  deleteTask,
+  newTask,
   updateTask,
+  searchTask,
 }

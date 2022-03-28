@@ -13,13 +13,17 @@ switch (cmd) {
     commands.list()
     break
   case 'done':
-    commands.deleteTodo(arg)
+    commands.deleteTask(arg)
     break
   case 'add':
-    commands.newTodo(arg)
+    commands.newTask(arg)
     break
   case 'update':
     commands.updateTask(arg, update)
+    break
+
+  case 'search':
+    commands.searchTask(arg)
     break
 
   default:
