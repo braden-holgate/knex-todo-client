@@ -25,6 +25,21 @@ function logError(err) {
   console.error('Uh oh!', err.message)
 }
 
+function deleteToDo(id) {
+  return db
+    .deleteTaskFromDb(id)
+    .then(() => {
+      console.log('Task completed! Task removed from list.')
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
+}
+
 module.exports = {
   list,
+  deleteToDo,
 }

@@ -11,7 +11,12 @@ function close(db = connection) {
   db.destroy()
 }
 
+function deleteTaskFromDb(id, db = connection) {
+  return db('todos').delete().where('id', id)
+}
+
 module.exports = {
   getTodos,
   close,
+  deleteTaskFromDb,
 }
