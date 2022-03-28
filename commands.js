@@ -28,6 +28,18 @@ function deleteToDo(id) {
   })
 }
 
+function addTask(id, task) {
+  const todo = {
+    id: id,
+    task: task,
+  }
+
+  return db.addItem(todo).then(() => {
+    console.log('You have added a new task!')
+    db.close()
+  })
+}
+
 function logError(err) {
   console.error('Uh oh!', err.message)
 }
@@ -35,4 +47,5 @@ function logError(err) {
 module.exports = {
   list,
   deleteToDo,
+  addTask,
 }
