@@ -29,7 +29,21 @@ function deleteToDo(id) {
   return db
     .deleteTaskFromDb(id)
     .then(() => {
-      console.log('Task completed! Task removed from list.')
+      console.log('Task complete! Task removed from list.')
+    })
+    .catch((err) => {
+      logError(err)
+    })
+    .finally(() => {
+      db.close()
+    })
+}
+
+function addToDo(task) {
+  return db
+    .addTaskToDb(task)
+    .then(() => {
+      console.log('New task has been added!')
     })
     .catch((err) => {
       logError(err)
@@ -42,4 +56,5 @@ function deleteToDo(id) {
 module.exports = {
   list,
   deleteToDo,
+  addToDo,
 }

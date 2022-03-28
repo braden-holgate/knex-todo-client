@@ -11,9 +11,11 @@ switch (cmd) {
     commands.list()
     break
   case 'done':
-    commands.deleteToDo(opt) //(id)
+    commands.deleteToDo(opt) //id
     break
-
+  case 'add':
+    commands.addToDo(opt) //task
+    break
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
