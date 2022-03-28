@@ -20,6 +20,9 @@ switch (cmd) {
   case 'update':
     commands.updateTask(id, task)
     break
+  case 'search':
+    commands.searchTask(id)
+    break
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }

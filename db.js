@@ -23,10 +23,15 @@ function updateItem(id, task, db = connection) {
   return db('todo').where(`id`, id).update('task', task)
 }
 
+function searchItem(input, db = connection) {
+  return db('todo').whereLike('task', input)
+}
+
 module.exports = {
   getTodos,
   deleteItem,
   close,
   addItem,
   updateItem,
+  searchItem,
 }

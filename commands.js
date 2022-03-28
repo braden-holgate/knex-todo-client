@@ -47,6 +47,17 @@ function updateTask(id, task) {
   })
 }
 
+function searchTask(input) {
+  return db.searchItem(input).then((todos) => {
+    console.log(
+      todos.forEach((todo) => {
+        console.info(`${todo.id}: ${todo.task}`)
+      })
+    )
+    db.close()
+  })
+}
+
 function logError(err) {
   console.error('Uh oh!', err.message)
 }
@@ -56,4 +67,5 @@ module.exports = {
   deleteToDo,
   addTask,
   updateTask,
+  searchTask,
 }
