@@ -22,6 +22,11 @@ function updateTodos(id, updateTask, db = connection) {
   return db('todos').update('task', updateTask).where('id', id)
 }
 
+function completeTodos(id, db = connection) {
+  // return db('todos').where('id', id).update({ complete: 'yes' })
+  return db('todos').where('id', id).update('complete', 'yes')
+}
+
 function close(db = connection) {
   db.destroy()
 }
@@ -32,5 +37,6 @@ module.exports = {
   deleteTodos,
   addTodos,
   updateTodos,
+  completeTodos,
   close,
 }

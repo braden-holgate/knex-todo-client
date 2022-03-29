@@ -10,7 +10,7 @@ switch (cmd) {
     commands.list()
     break
 
-  case 'done': {
+  case 'delete': {
     const id = userInputs[3]
     commands.deleteTask(id)
     break
@@ -32,6 +32,11 @@ switch (cmd) {
   case 'search': {
     const keyword = userInputs[3]
     commands.searchTask(keyword)
+    break
+  }
+  case 'done': {
+    const id = userInputs[3]
+    commands.completeTask(id)
     break
   }
 

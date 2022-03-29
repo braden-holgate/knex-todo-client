@@ -60,7 +60,7 @@ async function addTask(task) {
 //   return db
 //     .updateTodos(updateTask)
 //     .then(() => {
-//       list()
+//       return list()
 //     })
 //     .catch((error) => logError(error))
 //     .finally(() => db.close())
@@ -110,9 +110,20 @@ async function searchTask(keyword) {
   }
 }
 
+async function completeTask(id) {
+  try {
+    await db.completeTodos(id)
+    await list()
+  } catch (error) {
+    logError(error)
+  } finally {
+    db.close()
+  }
+}
+
 function printTodos(todos) {
   todos.forEach((todo) => {
-    console.info(`${todo.id}: ${todo.task}`)
+    console.info(`${todo.id}: ${todo.task}, complete: ${todo.complete}`)
   })
 }
 
@@ -126,4 +137,5 @@ module.exports = {
   addTask,
   updateTask,
   searchTask,
+  completeTask,
 }
