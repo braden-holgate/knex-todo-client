@@ -21,10 +21,32 @@ function printTodos(todos) {
   })
 }
 
+////function to delete todos ////
+
+function deleteTodo (id) {
+  return db.deleteTodo(id)
+    .then(()=>{})
+    .catch(logError)
+    .finally(db.close)
+}
+
+///////////////////////////////////
+
 function logError(err) {
   console.error('Uh oh!', err.message)
 }
 
+
+function addItem (itemName) {
+  return db.addTodo(itemName)
+  .then(()=>{})
+  .catch(logError)
+  .finally(db.close)
+} 
+
+
 module.exports = {
   list,
+  deleteTodo,
+  addItem
 }

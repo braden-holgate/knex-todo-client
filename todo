@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 const commands = require('./commands')
 
 const userInputs = process.argv
@@ -8,6 +7,16 @@ const cmd = userInputs[2]
 switch (cmd) {
   case 'list':
     commands.list()
+    break
+
+  case 'delete':
+    const number = userInputs[3]
+    commands.deleteTodo(number)
+    break
+
+  case 'add':
+    const itemName = userInputs[3]
+    commands.addItem(itemName)
     break
 
   default:
